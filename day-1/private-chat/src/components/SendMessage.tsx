@@ -134,7 +134,7 @@ export default function SendMessage(props: any): React.ReactElement {
                     await onSend(
                         from,
                         to,
-                        1,
+                        0,
                         message,
                         utxoType,
                         address,
