@@ -248,6 +248,7 @@ class App extends React.Component<any, any> {
           history,
           utxos: await this.wallet.GetUtxos(0xff),
           addresses: await this.wallet.GetAllAddresses(),
+          names: await this.wallet.GetMyNames()
         });
         this.setState({ syncProgress: 100, pendingQueue: 0 });
       });
@@ -425,6 +426,7 @@ class App extends React.Component<any, any> {
       const txs = await this.wallet.UpdateName(name, "", key, value, password);
       if (txs) {
         this.setState({
+          showOpenName: false,
           showConfirmTx: true,
           confirmTxText: `Update ${name}: Set ${key} to ${value} - Fee: ${
               txs.fee / 1e8
@@ -773,6 +775,7 @@ class App extends React.Component<any, any> {
                               syncProgress={syncProgress}
                               pendingQueue={pendingQueue}
                               wallet={this.njs.wallet}
+                              walletInstance={this.wallet}
                               network={this.wallet.network}
                               onSend={this.onSend}
                           />

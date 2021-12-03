@@ -30,6 +30,7 @@ export default function SendMessage(props: any): React.ReactElement {
     hideTitle,
     hideTo,
     hideFrom,
+    walletInstance
   } = props;
 
   const [from, setFrom] = React.useState("xnav");
@@ -90,8 +91,8 @@ export default function SendMessage(props: any): React.ReactElement {
                     shrink: true,
                   }}
                   onChange={(e) => {
+                    setTo(e.target.value);
                     if (wallet.bitcore.Address.isValid(e.target.value)) {
-                      setTo(e.target.value);
                       setErrorDest(false);
                     } else {
                       console.log(

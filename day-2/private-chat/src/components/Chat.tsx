@@ -53,7 +53,7 @@ function useWindowDimensions() {
 }
 
 function Chat(props: any): React.ReactElement {
-  const { balances, history, syncProgress, pendingQueue, addresses, wallet, onSend, network } =
+  const { balances, history, syncProgress, pendingQueue, addresses, wallet, onSend, network, walletInstance } =
     props;
 
   const [hideWarning, setHideWarning] = useState(false);
@@ -183,7 +183,7 @@ function Chat(props: any): React.ReactElement {
         }}
       />
 
-      <SendMessage wallet={wallet}
+      <SendMessage wallet={wallet} walletInstance={walletInstance}
                    network={network}
                    onSend={onSend}
                    balance={balances}></SendMessage>

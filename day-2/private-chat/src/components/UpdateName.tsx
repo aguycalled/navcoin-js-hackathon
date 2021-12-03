@@ -52,7 +52,7 @@ export default function UpdateName(props: any) {
         value={value}
         sx={{ mx: 0, mt: 2, width: "100%", minWidth: 300 }}
         onChange={(e) => {
-          setValue(e.target.value.toLowerCase());
+          setValue(e.target.value);
         }}
       />
 
