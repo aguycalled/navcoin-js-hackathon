@@ -141,7 +141,7 @@ export default function SendMessage(props: any): React.ReactElement {
                         address,
                         false
                     );
-              }
+                }
             }}
           >
             Send

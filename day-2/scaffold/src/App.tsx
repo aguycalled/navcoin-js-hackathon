@@ -422,6 +422,7 @@ class App extends React.Component<any, any> {
       if (txs) {
         this.setState({
           showConfirmTx: true,
+          showOpenName: false,
           confirmTxText: `Update ${name}: Set ${key} to ${value} - Fee: ${
               txs.fee / 1e8
           }`,

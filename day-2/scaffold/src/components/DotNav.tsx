@@ -128,8 +128,7 @@ function DotNav(props: any): React.ReactElement {
                         secondary={
                           <Typography sx={{ fontSize: "12px" }}>
                             {blockHeight - el.height > 6
-                              ? "Mature"
-                              : "Immature"}
+                              ? "Mature" : `Immature (${(el.height + 6) - blockHeight} blocks left)`}
                           </Typography>
                         }
                       />
