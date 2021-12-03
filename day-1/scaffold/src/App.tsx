@@ -603,11 +603,7 @@ class App extends React.Component<any, any> {
                   />
                   <BottomNavigationAction
                       label="Settings"
-                      icon={<SettingsOutlined />}
-                  />
-                  <BottomNavigationAction
-                      label="Chat"
-                      icon={<SettingsOutlined />}
+                      icon={<D />}
                   />
                 </BottomNavigation>
               </Paper>
