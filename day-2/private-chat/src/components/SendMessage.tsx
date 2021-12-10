@@ -92,7 +92,7 @@ export default function SendMessage(props: any): React.ReactElement {
                   }}
                   onChange={(e) => {
                     setTo(e.target.value);
-                    if (wallet.bitcore.Address.isValid(e.target.value)) {
+                    if (walletInstance.IsValidDotNavName(e.target.value.toLowerCase()) || wallet.bitcore.Address.isValid(e.target.value)) {
                       setErrorDest(false);
                     } else {
                       console.log(
@@ -132,9 +132,30 @@ export default function SendMessage(props: any): React.ReactElement {
             sx={{ width: "auto", float: "right" }}
             onClick={async () => {
                 if (!errorDest && to) {
+                    let destination = to;
+                    if (walletInstance.IsValidDotNavName(to.toLowerCase()))
+                    {
+                        try {
+                            const resolvedName = await walletInstance.ResolveName(to.toLowerCase());
+
+                            console.log(resolvedName);
+
+                            if (resolvedName["nav"] && wallet.bitcore.Address.isValid(resolvedName["nav"]))
+                            {
+                                destination = resolvedName["nav"];
+                            }
+                            else {
+                                setErrorDest(true);
+                                return;
+                            }
+                        } catch(e) {
+                            setErrorDest(true);
+                            return;
+                        }
+                    }
                     await onSend(
                         from,
-                        to,
+                        destination,
                         0,
                         message,
                         utxoType,
